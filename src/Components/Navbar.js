@@ -8,7 +8,7 @@ class Navbar extends Component {
     render() {
         return (
             <div className="nav">
-                <img src={menuIcon} className="icon" alt="menu-icon"/>
+                <div className="icon-circle"><img src={menuIcon} className="icon" alt="menu-icon"/></div>
                 <img src={searchIcon} className="icon" alt="search-icon"/>
                 <img src={profileIcon} className="icon" alt="profile-icon"/>
 

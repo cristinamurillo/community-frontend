@@ -20,7 +20,7 @@ class Landing extends Component {
                     <input type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
                     <input type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
                     <input type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Search"/>
                 </form>
                 </div>
             </div>
