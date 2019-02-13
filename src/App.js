@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Landing from './Components/Landing'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import './App.css';
 
