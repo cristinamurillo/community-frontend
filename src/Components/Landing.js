@@ -17,10 +17,10 @@ class Landing extends Component {
 
                 <h2 id="landing-header">Support Your Community | Raise Your Voice | Connect to Opportunities Near You </h2>
                 <form>
-                    <input type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
-                    <input type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
-                    <input type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
-                    <input type="submit" value="Search"/>
+                    <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
+                    <input className="checkbox" type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
+                    <input className="checkbox" type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
+                    <input className="text-field submit" type="submit" value="Search"/>
                 </form>
                 </div>
             </div>

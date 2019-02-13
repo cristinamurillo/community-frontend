@@ -60,6 +60,37 @@ code {
   cursor: pointer;
 }
 
+input.text-field {
+  padding: .85em;
+  border-radius: 6px;
+  border: none;
+  margin: .8em .4em;
+  box-shadow: 0 0 2px 0.5px #161616;
+  background: rgba(245,245,245,.7);
+  min-width: 30vh;
+}
+
+input.submit {
+  min-width: 10vh;
+  font-weight: bold;
+}
+.submit:hover {
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+input.checkbox {
+  min-width: 4vh;
+  background: none;
+  padding: 0;
+  height: 2.5vh;
+  margin-left: 0;
+  /* margin: 0; */
+  box-shadow: none;
+}
+
 /* .icon-circle {
   border: 4px solid lightblue;
   border-radius: 50%;
