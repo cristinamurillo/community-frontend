@@ -19,8 +19,14 @@ class Landing extends Component {
                     <h2 id="landing-header">Support Your Community | Raise Your Voice | Connect to Opportunities Near You </h2>
                     <form>
                         <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
-                        <input className="checkbox" type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
-                        <input className="checkbox" type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
+                        <label className="checkbox-container"><span className="label-text">Volunteer</span>
+                            <input className="checkbox" type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label className="checkbox-container"><span className="label-text">Paid</span>
+                            <input className="checkbox" type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
+                            <span class="checkmark"></span>
+                        </label>
                         <input className="text-field submit" type="submit" value="Search"/>
                     </form>
 
