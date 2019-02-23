@@ -10,7 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("square_bg.png"); */
+  background-image: url("background-img.png");
+  background-size: cover;
 }
 
 html {
@@ -25,7 +26,8 @@ code {
 .nav {
   width: 25vh;
   height: 100vh;
-  background-image: url("square_bg.png");
+  background: white;
+  /* background-image: url("square_bg.png"); */
   position: fixed;    
   top: 0;
   left: 0;
@@ -40,6 +42,9 @@ code {
 
 .page-content {
   margin-left: 25vh;
+  height: 100vh;
+  /* background-image: url("background-img.png");
+  background-size: cover; */
 }
 
 #landing-header {
