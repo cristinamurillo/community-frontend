@@ -24,7 +24,7 @@ code {
 }
 
 .nav {
-  width: 25vh;
+  width: 20vh;
   height: 100vh;
   background: white;
   /* background-image: url("square_bg.png"); */
@@ -41,7 +41,7 @@ code {
 }
 
 .page-content {
-  margin-left: 25vh;
+  margin-left: 20vh;
   height: 100vh;
   /* background-image: url("background-img.png");
   background-size: cover; */
@@ -95,6 +95,22 @@ input.checkbox {
   /* margin: 0; */
   box-shadow: none;
 }
+
+/* MAP STYLING */
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+
+canvas.mapboxgl-canvas {
+  position: relative !important;
+  border-radius: 8px;
+  /* box-shadow: 0 0 2px 2px #222; */
+  /* width: 100vh !important;
+  height: auto !important; */
+}
+
 
 /* .icon-circle {
   border: 4px solid lightblue;
