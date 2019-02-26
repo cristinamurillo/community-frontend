@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactMapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
+import ReactMapGL, {Marker, Popup, NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import CityPin from './CityPin'
 import axios from 'axios'
 

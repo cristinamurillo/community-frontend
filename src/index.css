@@ -103,6 +103,7 @@ input.submit {
   min-width: 10vh;
   font-weight: bold;
   box-shadow: none;
+  margin-left: 2em;
 }
 .submit:hover {
   background: black;
@@ -117,7 +118,7 @@ input.submit {
   flex-direction: row-reverse;
   position: relative;
   cursor: pointer;
-  margin: 1em;
+  margin: 1em 0em 1em .8em;
 }
 
 input.checkbox {
