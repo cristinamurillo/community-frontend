@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactMapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
-import mapIcon from '../map-marker-icon.png'
-import Pin from './Pin'
+import CityPin from './CityPin'
+import axios from 'axios'
 
 class Mapbox extends Component {
     state = {
@@ -12,25 +12,38 @@ class Mapbox extends Component {
           longitude: -73.935242,
           zoom: 10
         },
-        popupInfo: null
+        popupInfo: null,
+        opportunities: []
       };
+
+    componentDidMount() {
+        axios.get('http://localhost:3000/opportunities')
+        .then(response => {
+            console.log(response.data)
+            this.setState({
+                opportunities: response.data.data
+            })
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
 
     updateViewport = (viewport) => {
         this.setState({viewport})
     }
 
-    renderOpportunityMarker(){
+    renderOpportunityMarker(opportunity){
         return(
             <Marker
-                longitude={-73.935242}
-                latitude={40.730610} 
+                key={opportunity.id}
+                longitude={parseFloat(opportunity.attributes.location.split(', ')[1])}
+                latitude={parseFloat(opportunity.attributes.location.split(', ')[0])} 
             >
-            <Pin size={25}/>
+            <CityPin size={25}/>
             </Marker>
         )
     }
-
-
 
       render() {
         return (
@@ -41,7 +54,7 @@ class Mapbox extends Component {
                     mapboxApiAccessToken={'pk.eyJ1IjoieHRpbmFtdXJpbGxvIiwiYSI6ImNqbzhxMTdyMjE5ZTUzcHFxYThuYnR2YWMifQ.j0zHHpzStnhBejvcPq0UXA'}
                     mapStyle={'mapbox://styles/mapbox/streets-v9'}
                 >
-                    {this.renderOpportunityMarker()}
+                    {this.state.opportunities.map(this.renderOpportunityMarker)}
                     <div style={{position: 'absolute', right: 4, top: 4}}>
                         <NavigationControl onViewportChange={this.updateViewport} />
                     </div>

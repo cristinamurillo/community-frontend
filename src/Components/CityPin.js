@@ -11,8 +11,11 @@ const pinStyle = {
 };
 
 export default class CityPin extends PureComponent {
-
+  componentWillMount(){
+    console.log('hi')
+  }
   render() {
+    console.log('we in a pin')
     const {size = 25} = this.props;
 
     return (
