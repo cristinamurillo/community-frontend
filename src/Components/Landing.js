@@ -10,22 +10,27 @@ class Landing extends Component {
         location: "",
         volunteer: true,
         paid: true,
-        organizer_session: false,
+        organizer_session: null,
         changeViewport: false
     }
 
-    getOrganization = () => {
-        axios.get('http://localhost:3000/organizations/1')
+    componentDidMount(){
+        this.getUser()
+    }
+
+    // method is for testing purposes only, will be refactored to check to see if localstorage has stored a user token  
+    getUser = () => {
+        axios.get('http://localhost:3000/users/1')
             .then(response => {
-                console.log(response)
                 this.setState({
-                    organizer_session: true
+                    organizer_session: response.data.organization || null
                 })
             })
             .catch(error=>{
                 console.log(error)
             })
     }
+    // end test method 
 
     changeHandler = (e) => {
         this.setState({
@@ -52,7 +57,7 @@ class Landing extends Component {
         return (
             <div>
                 {/* {this.getOrganization()} */}
-                <Navbar />
+                <Navbar organization={this.state.organizer_session}/>
                 <div className="page-content">
 
                     <h2 id="landing-header">Support Your Community | Raise Your Voice | Connect to Opportunities Near You </h2>
