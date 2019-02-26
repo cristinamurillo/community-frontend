@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactMapGL, {Marker, Popup, NavigationControl, FlyToInterpolator} from 'react-map-gl';
 import CityPin from './CityPin'
 import axios from 'axios'
-
+const mapboxToken= 'pk.eyJ1IjoieHRpbmFtdXJpbGxvIiwiYSI6ImNqbzhxMTdyMjE5ZTUzcHFxYThuYnR2YWMifQ.j0zHHpzStnhBejvcPq0UXA'
 class Mapbox extends Component {
     state = {
         viewport: {
@@ -10,7 +10,9 @@ class Mapbox extends Component {
           height: '70vh',
           latitude: 40.730610,
           longitude: -73.935242,
-          zoom: 10
+          zoom: 10,
+          bearing: 0,
+          pitch: 0
         },
         popupInfo: null,
         opportunities: []
@@ -27,11 +29,36 @@ class Mapbox extends Component {
         .catch(error=>{
             console.log(error)
         })
+
+        console.log(this.props)
+        
     }
 
-    updateViewport = (viewport) => {
-        this.setState({viewport})
-    }
+    updateViewport = viewport => this.setState({
+        viewport: {...this.state.viewport, ...viewport}
+      })
+
+
+    goToViewport = (location) => {
+        this.props.viewportChanged()
+        axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${mapboxToken}`)
+            .then(response => {
+
+                console.log('call being made')
+                this.updateViewport({
+                    longitude: response.data.features[0].center[0],
+                    latitude: response.data.features[0].center[1],
+                    zoom: 14,
+                    transitionInterpolator: new FlyToInterpolator(),
+                    transitionDuration: 2000
+                  });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+       
+      };
 
     renderOpportunityMarker(opportunity){
         return(
@@ -46,12 +73,14 @@ class Mapbox extends Component {
     }
 
       render() {
+        {this.props.changeViewport && this.goToViewport(this.props.location)}
         return (
             <div className="map-container">
                 <ReactMapGL
                     {...this.state.viewport}
                     onViewportChange={this.updateViewport}
-                    mapboxApiAccessToken={'pk.eyJ1IjoieHRpbmFtdXJpbGxvIiwiYSI6ImNqbzhxMTdyMjE5ZTUzcHFxYThuYnR2YWMifQ.j0zHHpzStnhBejvcPq0UXA'}
+                    mapboxApiAccessToken={mapboxToken}
+                    dragToRotate={false}
                     mapStyle={'mapbox://styles/mapbox/streets-v9'}
                 >
                     {this.state.opportunities.map(this.renderOpportunityMarker)}
