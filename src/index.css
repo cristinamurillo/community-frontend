@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("background-img.png");
+  /* background-image: url("background-img.png"); */
   background-size: cover;
 }
 
@@ -43,7 +43,7 @@ code {
 
 .title-logo{
   font-family: 'Marcellus', serif;
-  font-size: x-large;
+  font-size: 1.3em;
   position: absolute;
   top: 4px;
   left: .5vh;
