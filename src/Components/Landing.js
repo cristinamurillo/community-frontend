@@ -10,7 +10,8 @@ class Landing extends Component {
         location: "",
         volunteer: true,
         paid: true,
-        organizer_session: false
+        organizer_session: false,
+        changeViewport: false
     }
 
     getOrganization = () => {
@@ -26,6 +27,26 @@ class Landing extends Component {
             })
     }
 
+    changeHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    submitHandler = (e) => {
+        e.preventDefault()
+        this.setState({
+            changeViewport: true
+        })
+        console.log(this.state.location)
+    }
+
+    viewportChanged = () => {
+        this.setState({
+            changeViewport: false
+        })
+    }
+
 
     render() {
         return (
@@ -35,7 +56,7 @@ class Landing extends Component {
                 <div className="page-content">
 
                     <h2 id="landing-header">Support Your Community | Raise Your Voice | Connect to Opportunities Near You </h2>
-                    <form>
+                    <form onSubmit={this.submitHandler}>
                         <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
                         <label className="checkbox-container"><span className="label-text">Volunteer</span>
                             <input className="checkbox" type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
@@ -48,7 +69,7 @@ class Landing extends Component {
                         <input className="text-field submit" type="submit" value="Search"/>
                     </form>
 
-                    <Mapbox />
+                    <Mapbox changeViewport={this.state.changeViewport} viewportChanged={this.viewportChanged}location = {this.state.location}/>
                 </div>
             </div>
         );
