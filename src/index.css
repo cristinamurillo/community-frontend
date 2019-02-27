@@ -24,6 +24,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* 
+.landing-tophrase {
+margin: 0em 2em .5em 2em;
+} */
 
 .nav {
   width: 20vh;
@@ -131,9 +135,12 @@ p {
 #landing-header {
   opacity: .8;
   font-family: 'Marcellus', serif;
-
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: nowrap;
   font-weight: 100;
-  padding: 3vh 5vh 0vh 5vh;
+  padding: 3vh 3em 1em 3em;
   font-size: larger;
 }
 
