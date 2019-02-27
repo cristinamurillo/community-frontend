@@ -28,12 +28,16 @@ class Navbar extends Component {
         this.props.history.push('/orgprofile')
     }
 
+    goToSearch = () => {
+        this.props.history.push('/')
+    }
+
     render() {
         return (
             <div className="nav">
                 <h5 className="title-logo">Acts of Democracy</h5>
                 <div className="icon-circle"><img src={menuIcon} className="icon" alt="Menu icon"/></div>
-                <img src={searchIcon} className="icon" alt="Search icon"/>
+                <img src={searchIcon} className="icon" alt="Search icon" onClick ={this.goToSearch}/>
                 <img src={profileIcon} className="icon" alt="Profile icon"/>
                 {this.state.organization && <img src={this.state.organization.icon_url} className="icon" alt="Organization icon" onClick ={this.goToOrgProfile}/>}
             </div>
