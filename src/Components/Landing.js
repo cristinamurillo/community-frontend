@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import Navbar from './Navbar'
 import Mapbox from './Mapbox'
 import axios from 'axios'
+import backgroundImg from '../background-img.png'
 
 class Landing extends Component {
 
@@ -54,6 +55,9 @@ class Landing extends Component {
 
 
     render() {
+        document.body.style =`
+        background: white;
+        `
         return (
             <div>
                 {/* {this.getOrganization()} */}
@@ -78,6 +82,13 @@ class Landing extends Component {
                 </div>
             </div>
         );
+    }
+
+    componentWillUnmount(){
+        document.body.style=`
+        background-image: url(${backgroundImg});
+        background-size: cover;
+        `
     }
 }
 

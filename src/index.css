@@ -11,12 +11,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("background-img.png"); */
+  background-image: url("background-img.png");
   background-size: cover;
 }
 
 html {
   height: 100vh;
+  overflow: hidden;
 }
 
 code {
@@ -34,7 +35,6 @@ code {
   left: 0;
   overflow-x: hidden;
   box-shadow: 0 0 0.5em 0px dimgrey;
-  display: flex;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,9 +55,81 @@ code {
   background-size: cover; */
 }
 
+.page-content.margined {
+  margin-top: 7vh;
+}
+
+.page-content.flexed {
+  display: flex;
+  justify-content: stretch;
+  padding-top: 3vh;
+  padding-left: 7vh;
+  padding-right: 7vh;
+}
+
+.org-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  max-height: 20vh;
+}
+
+.org-header .icon{
+  height: 2.7em;
+  width: auto;
+  margin-top: 1.5vh;
+  margin-right: 1vh;
+  margin-left: 0vh;
+}
+
+.col1 {
+  min-width: 50vh;
+  text-align: left;
+}
+
+.col2 {
+  min-width: 90vh;
+  margin-left: 7vh;
+  text-align: left;
+}
+
+.org-prof-tab {
+  margin-top: 3vh;
+}
+
+h5 {
+  font-family: 'Marcellus', serif;
+  font-size: 1.5em;
+  opacity: .85;
+}
+
+p {
+  /* font-family: 'Allerta', sans-serif; */
+
+}
+
+.page-header {
+  font-size: 2.7em;
+  opacity: .8;
+  font-family: 'Marcellus', serif;
+  font-weight: 100;
+  text-align: left;
+  margin-bottom: 2.5vh;
+  margin-top: 0vh;
+}
+
+.whitebox {
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0.5px lightgrey;
+  background-color: white;
+  padding: .4em 1em;
+  text-align: left;
+}
+
 #landing-header {
   opacity: .8;
-  /* font-family: 'Allerta', sans-serif; */
   font-family: 'Marcellus', serif;
 
   font-weight: 100;
