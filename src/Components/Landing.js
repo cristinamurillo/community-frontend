@@ -64,7 +64,7 @@ class Landing extends Component {
                 <Navbar organization={this.state.organizer_session}/>
                 <div className="page-content">
 
-                    <h2 id="landing-header">Support Your Community | Raise Your Voice | Connect to Opportunities Near You </h2>
+                    <h2 id="landing-header"><span className="landing-tophrase">Support Your Community </span>| <span className="landing-tophrase">Raise Your Voice </span>| <span className="landing-tophrase">Connect to Opportunities Near You </span></h2>
                     <form onSubmit={this.submitHandler}>
                         <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
                         <label className="checkbox-container"><span className="label-text">Volunteer</span>
