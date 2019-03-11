@@ -154,6 +154,7 @@ p {
   cursor: pointer;
 }
 
+/* landing page form style */
 form {
   display: flex;
   justify-content: left;
@@ -255,6 +256,7 @@ input.checkbox {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+/* landing page form style ends */
 
 /* MAP STYLING */
 .map-container {
@@ -273,6 +275,13 @@ canvas.mapboxgl-canvas {
   /* box-shadow: 0 0 2px 2px #222; */
   /* width: 100vh !important;
   height: auto !important; */
+}
+
+.event-pin {
+  fill: #7c3ee0;
+}
+.event-pin:hover{
+  fill: rgb(75, 255, 255);
 }
 
 

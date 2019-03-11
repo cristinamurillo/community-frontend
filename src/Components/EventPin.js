@@ -6,21 +6,23 @@ const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,
 
 const pinStyle = {
   cursor: 'pointer',
-  fill: '#d00',
+  // fill: '#7c3ee0',
   stroke: 'none'
 };
 
-export default class CityPin extends PureComponent {
+export default class EventPin extends PureComponent {
 
   render() {
-    const {size = 25} = this.props;
+    const {size = 25, onClick} = this.props;
 
     return (
       <svg 
+        className = "event-pin"
         height={size}
         viewBox="0 0 24 24"
         style={{...pinStyle, transform: `translate(${-size / 2}px,${-size}px)`}}
-        // onClick={onClick}
+        onClick={onClick}
+
       >
         <path d={ICON}/>
       </svg>
