@@ -19,6 +19,7 @@ class Mapbox extends Component {
       };
 
     componentDidMount() {
+        console.log("remounted")
         axios.get('http://localhost:3000/opportunities')
         .then(response => {
             console.log(response.data)
@@ -61,7 +62,7 @@ class Mapbox extends Component {
       };
 
     renderOpportunityMarker = (opportunity) => {
-        if((this.props.volunteer && !opportunity.attributes.paid) || (this.props.paid && opportunity.attributes.paid)){
+        if(this.opportunityValid(opportunity.attributes)){
             return(
                 <Marker
                     key={opportunity.id}
@@ -71,6 +72,18 @@ class Mapbox extends Component {
                 <CityPin size={25}/>
                 </Marker>
             )
+        }
+    }
+    //checks if opportunity meets search criteria
+    opportunityValid = (opportunity) => {
+        console.log(this.props.date)
+        let oppDate = new Date (opportunity.date)
+        if(((this.props.volunteer && !opportunity.paid) 
+        || (this.props.paid && opportunity.paid))
+        && oppDate >= this.props.date){
+            return true 
+        } else {
+            return false
         }
     }
 
