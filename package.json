@@ -11,6 +11,7 @@
     "mapbox-gl": "^0.53.0",
     "npm": "^6.7.0",
     "react": "^16.8.1",
+    "react-datepicker": "^2.1.0",
     "react-dom": "^16.8.1",
     "react-map-gl": "^4.0.12",
     "react-mapbox-gl": "^4.2.0",
