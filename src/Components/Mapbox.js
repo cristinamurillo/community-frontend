@@ -60,16 +60,18 @@ class Mapbox extends Component {
        
       };
 
-    renderOpportunityMarker(opportunity){
-        return(
-            <Marker
-                key={opportunity.id}
-                longitude={parseFloat(opportunity.attributes.location.split(', ')[1])}
-                latitude={parseFloat(opportunity.attributes.location.split(', ')[0])} 
-            >
-            <CityPin size={25}/>
-            </Marker>
-        )
+    renderOpportunityMarker = (opportunity) => {
+        if((this.props.volunteer && !opportunity.paid) || (this.props.paid && opportunity.paid)){
+            return(
+                <Marker
+                    key={opportunity.id}
+                    longitude={parseFloat(opportunity.attributes.location.split(', ')[1])}
+                    latitude={parseFloat(opportunity.attributes.location.split(', ')[0])} 
+                >
+                <CityPin size={25}/>
+                </Marker>
+            )
+        }
     }
 
       render() {

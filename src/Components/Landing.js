@@ -34,9 +34,11 @@ class Landing extends Component {
     // end test method 
 
     changeHandler = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        if(e.target.type === "checkbox"){
+            this.setState({[e.target.name]: !this.state[e.target.name]})
+        } else {
+            this.setState({[e.target.name]: e.target.value})
+        }
     }
 
     submitHandler = (e) => {
@@ -68,17 +70,17 @@ class Landing extends Component {
                     <form onSubmit={this.submitHandler}>
                         <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
                         <label className="checkbox-container"><span className="label-text">Volunteer</span>
-                            <input className="checkbox" type="checkbox" name="volunteer"  value={this.state.volunteer} onChange ={this.changeHandler}/>
+                            <input className="checkbox" type="checkbox" name="volunteer"  checked={this.state.volunteer} onChange ={this.changeHandler}/>
                             <span className="checkmark"></span>
                         </label>
                         <label className="checkbox-container"><span className="label-text">Paid</span>
-                            <input className="checkbox" type="checkbox" name="paid"  value={this.state.paid} onChange ={this.changeHandler}/>
+                            <input className="checkbox" type="checkbox" name="paid"  checked={this.state.paid} onChange ={this.changeHandler}/>
                             <span className="checkmark"></span>
                         </label>
                         <input className="text-field submit" type="submit" value="Search"/>
                     </form>
 
-                    <Mapbox changeViewport={this.state.changeViewport} viewportChanged={this.viewportChanged}location = {this.state.location}/>
+                    <Mapbox changeViewport={this.state.changeViewport} viewportChanged={this.viewportChanged} location = {this.state.location} volunteer = {this.state.volunteer} paid = {this.state.paid}/>
                 </div>
             </div>
         );
