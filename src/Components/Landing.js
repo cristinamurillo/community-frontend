@@ -45,6 +45,10 @@ class Landing extends Component {
         }
     }
 
+    dateChangeHandler = (date) => {
+        this.setState({startDate: date})
+    }
+
     submitHandler = (e) => {
         e.preventDefault()
         this.setState({
@@ -84,12 +88,12 @@ class Landing extends Component {
                         <DatePicker
                             className = "text-field datepicker"
                             selected={this.state.startDate}
-                            onChange={this.handleChange}
+                            onChange={this.dateChangeHandler}
                         />
                         <input className="text-field submit" type="submit" value="Search"/>
                     </form>
 
-                    <Mapbox changeViewport={this.state.changeViewport} viewportChanged={this.viewportChanged} location = {this.state.location} volunteer = {this.state.volunteer} paid = {this.state.paid}/>
+                    <Mapbox changeViewport={this.state.changeViewport} viewportChanged={this.viewportChanged} location = {this.state.location} volunteer = {this.state.volunteer} paid = {this.state.paid} date = {this.state.startDate}/>
                 </div>
             </div>
         );

@@ -61,7 +61,7 @@ class Mapbox extends Component {
       };
 
     renderOpportunityMarker = (opportunity) => {
-        if((this.props.volunteer && !opportunity.paid) || (this.props.paid && opportunity.paid)){
+        if((this.props.volunteer && !opportunity.attributes.paid) || (this.props.paid && opportunity.attributes.paid)){
             return(
                 <Marker
                     key={opportunity.id}
