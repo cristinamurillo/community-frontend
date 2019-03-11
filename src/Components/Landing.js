@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import Navbar from './Navbar'
 import Mapbox from './Mapbox'
+import DatePicker from 'react-datepicker'
 import axios from 'axios'
 import backgroundImg from '../background-img.png'
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class Landing extends Component {
 
@@ -11,6 +14,7 @@ class Landing extends Component {
         location: "",
         volunteer: true,
         paid: true,
+        startDate: new Date(),
         organizer_session: null,
         changeViewport: false
     }
@@ -68,7 +72,7 @@ class Landing extends Component {
 
                     <h2 id="landing-header"><span className="landing-tophrase">Support Your Community </span>| <span className="landing-tophrase">Raise Your Voice </span>| <span className="landing-tophrase">Connect to Opportunities Near You </span></h2>
                     <form onSubmit={this.submitHandler}>
-                        <input className="text-field" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
+                        <input className="text-field large" type="text" name="location" placeholder="Search by zip code" value={this.state.location} onChange ={this.changeHandler}/>
                         <label className="checkbox-container"><span className="label-text">Volunteer</span>
                             <input className="checkbox" type="checkbox" name="volunteer"  checked={this.state.volunteer} onChange ={this.changeHandler}/>
                             <span className="checkmark"></span>
@@ -77,6 +81,11 @@ class Landing extends Component {
                             <input className="checkbox" type="checkbox" name="paid"  checked={this.state.paid} onChange ={this.changeHandler}/>
                             <span className="checkmark"></span>
                         </label>
+                        <DatePicker
+                            className = "text-field datepicker"
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                        />
                         <input className="text-field submit" type="submit" value="Search"/>
                     </form>
 
