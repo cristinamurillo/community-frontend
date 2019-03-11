@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactMapGL, {Marker, Popup, NavigationControl, FlyToInterpolator} from 'react-map-gl';
-import CityPin from './CityPin'
+import EventPin from './EventPin'
+import EventInfo from './EventInfo'
 import axios from 'axios'
 const mapboxToken= 'pk.eyJ1IjoieHRpbmFtdXJpbGxvIiwiYSI6ImNqbzhxMTdyMjE5ZTUzcHFxYThuYnR2YWMifQ.j0zHHpzStnhBejvcPq0UXA'
 class Mapbox extends Component {
@@ -30,8 +31,6 @@ class Mapbox extends Component {
         .catch(error=>{
             console.log(error)
         })
-
-        console.log(this.props)
         
     }
 
@@ -44,7 +43,6 @@ class Mapbox extends Component {
         this.props.viewportChanged()
         axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${mapboxToken}`)
             .then(response => {
-
                 console.log('call being made')
                 this.updateViewport({
                     longitude: response.data.features[0].center[0],
@@ -69,14 +67,14 @@ class Mapbox extends Component {
                     longitude={parseFloat(opportunity.attributes.location.split(', ')[1])}
                     latitude={parseFloat(opportunity.attributes.location.split(', ')[0])} 
                 >
-                <CityPin size={25}/>
+                    <EventPin size={25} onClick={() => this.setState({popupInfo: opportunity.attributes})} />
                 </Marker>
             )
         }
     }
+
     //checks if opportunity meets search criteria
     opportunityValid = (opportunity) => {
-        console.log(this.props.date)
         let oppDate = new Date (opportunity.date)
         if(((this.props.volunteer && !opportunity.paid) 
         || (this.props.paid && opportunity.paid))
@@ -87,8 +85,26 @@ class Mapbox extends Component {
         }
     }
 
+    renderPopup = () => {
+        const {popupInfo} = this.state
+        console.log("hi")
+        console.log(popupInfo)
+
+        return popupInfo && (
+            <Popup tipSize={5}
+              anchor="top"
+              longitude={parseFloat(popupInfo.location.split(', ')[1])}
+              latitude={parseFloat(popupInfo.location.split(', ')[0])} 
+              closeOnClick={false}
+              onClose={() => this.setState({popupInfo: null})} >
+                <EventInfo opportunity={popupInfo} />
+            </Popup>
+          );
+    }
+
       render() {
         {this.props.changeViewport && this.goToViewport(this.props.location)}
+ 
         return (
             <div className="map-container">
                 <ReactMapGL
@@ -99,6 +115,8 @@ class Mapbox extends Component {
                     mapStyle={'mapbox://styles/mapbox/streets-v9'}
                 >
                     {this.state.opportunities.map(this.renderOpportunityMarker)}
+                    {this.renderPopup()}
+
                     <div style={{position: 'absolute', right: 4, top: 4}}>
                         <NavigationControl onViewportChange={this.updateViewport} />
                     </div>
